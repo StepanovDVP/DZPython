@@ -2,8 +2,8 @@
 # Выдать без повторений в порядке возрастания все те числа, которые встречаются в обоих наборах.
 # Пользователь вводит 2 списка. 1 строка - первый список через пробел. 2 строка - второй список через пробел.
 
-first_list = set(list(map(int, input().split())))
-second_list = set(list(map(int, input().split())))
+first_list = set(list(map(int, input('1 list: ').split())))
+second_list = set(list(map(int, input('2 list: ').split())))
 print(sorted(first_list.intersection(second_list)))
 
 # Задача 24: В фермерском хозяйстве в Карелии выращивают чернику. Она растет на круглой грядке, причем кусты высажены только по окружности.
@@ -19,11 +19,16 @@ print(sorted(first_list.intersection(second_list)))
 # Input: 2 2 1 3 2
 # Output: 7
 
-a = list(map(int, input().split()))
-a.append(a[0])
+a = (list(map(int, input('введите кол-во ягод, через _пробел_ ').split())))
 maximum = 0
 for i in range(len(a)-1):
     a_i = a[i - 1] + a[i] + a[i + 1]
     if a_i > maximum:
         maximum = a_i
+    if i == (len(a) - 2):
+        a.append(a[0])
+        i = i + 1
+        a_i = a[i - 1] + a[i] + a[i + 1]
+        if a_i > maximum:
+            maximum = a_i
 print(maximum)
